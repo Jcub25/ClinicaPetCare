@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ClinicaPetCare.Models.Pet>
+
+@{
+    ViewData["Title"] = "Clínica PetCare - Mascotas registradas";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (TempData["Mensaje"] is string msg)
+{
+    <div class="alert alert-success" role="alert">
+        @msg
+    </div>
+}
+
+<p>
+    <a class="btn btn-primary" asp-controller="Pet" asp-action="Create">+ Nueva Mascota</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No hay mascotas registradas aún.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Nombre del dueño</th>
+                <th>Teléfono del dueño</th>
+                <th>Fecha de ingreso</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.NombreMascota</td>
+                    <td>@p.Especie</td>
+                    <td>@p.Raza</td>
+                    <td>@p.Edad</td>
+                    <td>@p.NombreDueno</td>
+                    <td>@p.TelefonoDueno</td>
+                    <td>@p.FechaIngreso.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

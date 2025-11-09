@@ -7,9 +7,10 @@ namespace ClinicaPetCare.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Nombre de la Mascota")]
         [Required(ErrorMessage = "El nombre de la mascota es obligatorio.")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "El nombre debe tener al menos 2 caracteres.")]
-        public string Nombre { get; set; }
+        public string NombreMascota { get; set; }
 
         [Required(ErrorMessage = "Debe seleccionar una especie.")]
         public string Especie { get; set; } 
@@ -26,7 +27,7 @@ namespace ClinicaPetCare.Models
 
         [Required(ErrorMessage = "El telefono del dueño es obligatorio.")]
         [RegularExpression(@"^\d{8}$", ErrorMessage = "El telefono debe tener exactamente 8 digitos.")]
-        public string Telefono { get; set; }
+        public string TelefonoDueno { get; set; }
 
         [Required(ErrorMessage = "La fecha de ingreso es obligatoria.")]
         [DataType(DataType.Date)]
